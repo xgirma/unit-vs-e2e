@@ -167,3 +167,67 @@ E/direct - Error code: 135
 Solution: update webdriver-manager first
 
     $ npx webdriver-manager update
+
+# more than one element found
+```javascript
+import { browser, by, element } from 'protractor';
+
+export class AppPage {
+  navigateTo() {
+    return browser.get(browser.baseUrl) as Promise<any>;
+  }
+
+  getTitleText() {
+    return element(by.css('h1')).getText() as Promise<string>;
+  }
+
+  getTitleLink() {
+    return element(by.css('app-top-bar > a')).getAttribute('href') as Promise<string>;
+  }
+
+  clickTitle() {
+    return element(by.css('h1')).click() as Promise<void>;
+  }
+
+  clickCheckoutButton() {
+    return element(by.css('app-top-bar > a.button')).click() as Promise<void>;
+  }
+}
+```
+Error message
+
+```text
+top-bar
+      ✓ should display title
+[17:33:28] W/element - more than one element found for locator By(css selector, app-top-bar > a) - the first result will be used
+      ✓ title should link to '/'
+      ✓ clicking checkout should navigate to shopping cart
+      ✓ clicking title should navigate to home
+```
+
+Solution: 
+```javascript
+import { browser, by, element } from 'protractor';
+
+export class AppPage {
+  navigateTo() {
+    return browser.get(browser.baseUrl) as Promise<any>;
+  }
+
+  getTitleText() {
+    return element(by.css('h1')).getText() as Promise<string>;
+  }
+
+  getTitleLink() {
+    return element(by.css('a:nth-child(1)')).getAttribute('href') as Promise<string>;
+  }
+
+  clickTitle() {
+    return element(by.css('h1')).click() as Promise<void>;
+  }
+
+  clickCheckoutButton() {
+    return element(by.css('app-top-bar > a.button')).click() as Promise<void>;
+  }
+}
+```

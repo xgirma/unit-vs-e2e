@@ -10,6 +10,18 @@ export class AppPage {
   }
 
   getTitleLink() {
-    return element(by.css('app-top-bar > a')).getAttribute('href') as Promise<string>;
+    return element(by.css('a:nth-child(1)')).getAttribute('href') as Promise<string>;
+  }
+
+  clickTitle() {
+    return element(by.css('h1')).click() as Promise<void>;
+  }
+
+  clickCheckoutButton() {
+    return element(by.css('app-top-bar > a.button')).click() as Promise<void>;
+  }
+
+  getCheckoutButtonLink() {
+    return element(by.css('a:nth-child(2)')).getAttribute('href') as Promise<string>;
   }
 }

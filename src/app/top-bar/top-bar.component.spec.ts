@@ -34,4 +34,9 @@ describe('TopBarComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('a:nth-child(1)').getAttribute('href')).toEqual('/');
   });
+
+  it(`checkout button should link to '/cart'`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('a:nth-child(2)').getAttribute('href')).toEqual('/cart');
+  });
 });

@@ -26,5 +26,19 @@ describe('workspace-project App', () => {
     it(`title should link to '/'`, () => {
       expect(page.getTitleLink()).toEqual(browser.baseUrl);
     });
+
+    it(`checkout button should link to '/cart'`, () => {
+      expect(page.getCheckoutButtonLink()).toEqual(browser.baseUrl + 'cart');
+    });
+
+    it('clicking checkout should navigate to shopping cart', () => {
+      page.clickCheckoutButton();
+      expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + 'cart');
+    });
+
+    it('clicking title should navigate to home', () => {
+      page.clickTitle();
+      expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
+    });
   });
 });
