@@ -6,6 +6,10 @@ export class AppPage {
   }
 
   getTitleText() {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+    return element(by.css('h1')).getText() as Promise<string>;
+  }
+
+  getTitleLink() {
+    return element(by.css('app-top-bar > a')).getAttribute('href') as Promise<string>;
   }
 }
