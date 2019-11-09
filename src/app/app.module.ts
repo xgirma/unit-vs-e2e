@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { CartComponent } from './cart/cart.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    CartComponent
+    CartComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +22,7 @@ import { CartComponent } from './cart/cart.component';
     NoopAnimationsModule,
     RouterModule.forRoot([
       {path: 'cart', component: CartComponent},
+      {path: '', component: ProductListComponent},
     ]),
   ],
   providers: [],

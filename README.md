@@ -231,3 +231,60 @@ export class AppPage {
   }
 }
 ```
+
+# try to run e2e while your Angular CLI serve the app on port 4200
+
+your angular.json
+```json
+       "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "your-first-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "your-first-app:serve:production"
+            }
+          }
+        }
+``` 
+
+Error message:
+```text
+[17:56:30] I/update - chromedriver: chromedriver_78.0.3904.70 up to date
+An unhandled exception occurred: Port 4200 is already in use. Use '--port' to specify a different port.
+See "/private/var/folders/5r/qsspvwt125l24gh8m_tp06c40000gp/T/ng-HTOG0n/angular-errors.log" for further details.
+npm ERR! code ELIFECYCLE
+npm ERR! syscall spawn
+npm ERR! file sh
+npm ERR! errno ENOENT
+npm ERR! your-first-app@0.0.0 e2e: `ng e2e`
+npm ERR! spawn ENOENT
+npm ERR! 
+npm ERR! Failed at the your-first-app@0.0.0 e2e script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/xxxxxx/.npm/_logs/2019-11-09T22_56_40_812Z-debug.log
+
+Process finished with exit code 1
+``` 
+
+Solution:
+add a different port (e.g. 4201) to your angular.json 
+```json
+"e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "your-first-app:serve",
+            "port": 4201
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "your-first-app:serve:production"
+            }
+          }
+        }
+```
