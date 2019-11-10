@@ -97,5 +97,11 @@ describe('workspace-project App', () => {
         }
       });
     });
+
+    it('product name should have product details link', () => {
+      products.forEach((product, index) => {
+        expect(page.getProductNameLinText(index)).toEqual(`${browser.baseUrl}products/${index}`);
+      });
+    });
   });
 });

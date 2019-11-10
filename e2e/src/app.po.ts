@@ -42,6 +42,10 @@ export class AppPage {
     return element(by.css(`#product${index} > h3 > a`)).getAttribute('title') as Promise<string>;
   }
 
+  getProductNameLinText(index) {
+    return element(by.css(`#product${index} > h3 > a`)).getAttribute('href') as Promise<string>;
+  }
+
   getProductDescription(index) {
     return element(by.css(`#product${index} > p`)).getText() as Promise<string>;
   }

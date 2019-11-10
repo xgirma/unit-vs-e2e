@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProductListComponent } from './product-list.component';
 import { ProductAlertComponent } from '../product-alert/product-alert.component';
@@ -12,7 +13,8 @@ describe('ProductListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductListComponent, ProductAlertComponent ]
+      declarations: [ ProductListComponent, ProductAlertComponent],
+      imports: [ RouterTestingModule ]
     })
     .compileComponents();
   }));
@@ -71,7 +73,6 @@ describe('ProductListComponent', () => {
   });
 
   it('shared button should have alert when clicked', () => {
-    const compiled = fixture.debugElement.nativeElement;
     products.forEach((product, index) => {
       let button: DebugElement;
       button = fixture.debugElement.query(By.css(`#product${index} > button`));
@@ -85,7 +86,6 @@ describe('ProductListComponent', () => {
   });
 
   it('price > 700 should have notification', () => {
-    const compiled = fixture.debugElement.nativeElement;
     products.forEach((product, index) => {
       let button: DebugElement;
       if (product.price > 700) {
@@ -100,6 +100,14 @@ describe('ProductListComponent', () => {
         button = fixture.debugElement.query(By.css(`#product${index} > app-product-alert > p > button`));
         expect(button).toBeNull();
       }
+    });
+  });
+
+  it('product name should have product details link', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    products.forEach((product, index) => {
+      expect(compiled.querySelector(`#product${index} > h3 > a`).getAttribute('href'))
+        .toEqual(`/products/${index}`);
     });
   });
 });
