@@ -49,4 +49,8 @@ export class AppPage {
   hasProductDescription(index) {
     return element(by.css(`#product${index} > p`)).isPresent() as Promise<boolean>;
   }
+
+  clickShareButton(index) {
+    return element(by.css(`#product${index} > button`)).click() as Promise<void>;
+  }
 }

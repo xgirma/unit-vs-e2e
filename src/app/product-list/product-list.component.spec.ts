@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { ProductListComponent } from './product-list.component';
 import { products } from '../products';
@@ -29,7 +31,9 @@ describe('ProductListComponent', () => {
   });
 
   it(`should have share(): void method`, () => {
-    expect(component.share()).not.toBeDefined();
+    products.forEach(product => {
+      expect(component.share(product.name)).not.toBeDefined();
+    });
   });
 
   it(`should have sub-title 'product'`, () => {
@@ -62,6 +66,20 @@ describe('ProductListComponent', () => {
       } else {
         expect(compiled.querySelector(`#product${index} > p`)).toBeNull();
       }
+    });
+  });
+
+  it('shared button should have alert when clicked', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    products.forEach((product, index) => {
+      let button: DebugElement;
+      button = fixture.debugElement.query(By.css(`#product${index} > button`));
+
+      const spy = spyOn(window, 'alert');
+      button.triggerEventHandler('click', null);
+      expect(window.alert).toHaveBeenCalledWith(`Product ${product.name} has been shared!`);
+      jasmine.getEnv().allowRespy(true);
+      spy.calls.reset();
     });
   });
 });

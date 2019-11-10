@@ -1,4 +1,4 @@
-import { browser, logging } from 'protractor';
+import { browser, ExpectedConditions, logging } from 'protractor';
 
 import { AppPage } from './app.po';
 import { products } from '../../src/app/products';
@@ -71,6 +71,16 @@ describe('workspace-project App', () => {
         } else {
           expect(page.hasProductDescription(index)).toBe(false);
         }
+      });
+    });
+
+    it('clicking share should open alert', () => {
+      products.forEach((product, index) => {
+        page.clickShareButton(index);
+        browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
+        const alert = browser.switchTo().alert();
+        expect(alert.getText()).toEqual(`Product ${product.name} has been shared!`);
+        alert.accept();
       });
     });
   });

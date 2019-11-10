@@ -326,3 +326,41 @@ it('should show description', () => {
       });
 });
 ```
+
+# Error: <spyOn> : alert has already been spied upon
+```javascript
+it('shared button should have alert when clicked', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    products.forEach((product, index) => {
+      let button: DebugElement;
+      button = fixture.debugElement.query(By.css(`#product${index} > button`));
+
+      const spy = spyOn(window, 'alert');
+      button.triggerEventHandler('click', null);
+      expect(window.alert).toHaveBeenCalledWith(`Product ${product.name} has been shared!`);
+    });
+  });
+```
+
+Error message:
+```text
+Error: <spyOn> : alert has already been spied upon
+        Usage: spyOn(<object>, <methodName>)
+            at <Jasmine>
+```
+Solution:
+```javascript
+it('shared button should have alert when clicked', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    products.forEach((product, index) => {
+      let button: DebugElement;
+      button = fixture.debugElement.query(By.css(`#product${index} > button`));
+
+      const spy = spyOn(window, 'alert');
+      button.triggerEventHandler('click', null);
+      expect(window.alert).toHaveBeenCalledWith(`Product ${product.name} has been shared!`);
+      jasmine.getEnv().allowRespy(true);
+      spy.calls.reset();
+    });
+  });
+```
