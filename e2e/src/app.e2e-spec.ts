@@ -1,10 +1,12 @@
 import { browser, ExpectedConditions, logging } from 'protractor';
 
 import { AppPage } from './app.po';
+import { AppDetails } from './details.po';
 import { products } from '../../src/app/products';
 
 describe('workspace-project App', () => {
   let page: AppPage;
+  let details: AppDetails;
 
   beforeEach(() => {
     page = new AppPage();
@@ -19,13 +21,13 @@ describe('workspace-project App', () => {
   });
 
   describe('top-bar', () => {
-    it('should display title', () => {
+    it('should display app title', () => {
       page.navigateTo();
-      expect(page.getTitleText()).toEqual('My Store');
+      expect(page.getAppTitleText()).toEqual('My Store');
     });
 
-    it(`title should link to '/'`, () => {
-      expect(page.getTitleLink()).toEqual(browser.baseUrl);
+    it(`app-title should link to '/'`, () => {
+      expect(page.getAppTitleLink()).toEqual(browser.baseUrl);
     });
 
     it(`checkout button should link to '/cart'`, () => {
@@ -37,19 +39,19 @@ describe('workspace-project App', () => {
       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + 'cart');
     });
 
-    it('clicking title should navigate to home', () => {
-      page.clickTitle();
+    it('clicking app-title should navigate to home', () => {
+      page.clickAppTitle();
       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
     });
   });
 
   describe('product-list', () => {
     beforeAll(() => {
-      page.navigateTo(); // to reset if navigation fails before reaching here
+      page.navigateTo();
     });
 
-    it(`should have sub-title 'product'`, () => {
-      expect(page.getProductTitle()).toEqual('Products');
+    it(`should have page title 'Products'`, () => {
+      expect(page.getPageTitle()).toEqual('Products');
     });
 
     it('should show products name', () => {
@@ -101,6 +103,27 @@ describe('workspace-project App', () => {
     it('product name should have product details link', () => {
       products.forEach((product, index) => {
         expect(page.getProductNameLinText(index)).toEqual(`${browser.baseUrl}products/${index}`);
+      });
+    });
+  });
+
+  describe('product-details', () => {
+    beforeAll(() => {
+      details = new AppDetails();
+      page.navigateTo();
+    });
+
+    it('should have product details', () => {
+      products.forEach((product, index) => {
+        page.clickProductName(index);
+        const url = browser.baseUrl + `products/${index}`;
+        browser.wait(ExpectedConditions.urlContains(url), 5000);
+        expect(details.getPageTitle()).toEqual('Product Details');
+        expect(details.getProductName()).toEqual(product.name);
+        expect(details.getProductPrice()).toEqual(`$${product.price}.00`);
+        expect(details.getProductDescription()).toEqual(product.description);
+        page.navigateTo();
+        browser.wait(ExpectedConditions.urlContains(browser.baseUrl ), 5000);
       });
     });
   });
