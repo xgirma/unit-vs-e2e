@@ -1,16 +1,19 @@
 import { browser, ExpectedConditions, logging } from 'protractor';
 
+import { AppTopBar } from './top-bar.po';
 import { AppProductList } from './product-list.po';
 import { AppProductDetails } from './product-details.po';
 import { AppCart } from './cart.po';
 import { products } from '../../src/app/products';
 
 describe('workspace-project App', () => {
+  let appTopBar: AppTopBar;
   let productListPage: AppProductList;
   let productDetailsPage: AppProductDetails;
-  let productCartPage: AppCart;
+  let cartPage: AppCart;
 
   beforeEach(() => {
+    appTopBar = new AppTopBar();
     productListPage = new AppProductList();
   });
 
@@ -25,24 +28,24 @@ describe('workspace-project App', () => {
   describe('top-bar', () => {
     it('should display app title', () => {
       productListPage.navigateTo();
-      expect(productListPage.getAppTitleText()).toEqual('My Store');
+      expect(appTopBar.getAppTitleText()).toEqual('My Store');
     });
 
     it(`app-title should link to '/'`, () => {
-      expect(productListPage.getAppTitleLink()).toEqual(browser.baseUrl);
+      expect(appTopBar.getAppTitleLink()).toEqual(browser.baseUrl);
     });
 
     it(`checkout button should link to '/cart'`, () => {
-      expect(productListPage.getCheckoutButtonLink()).toEqual(browser.baseUrl + 'cart');
+      expect(appTopBar.getCheckoutButtonLink()).toEqual(browser.baseUrl + 'cart');
     });
 
     it('clicking checkout should navigate to shopping cart', () => {
-      productListPage.clickCheckoutButton();
+      appTopBar.clickCheckoutButton();
       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + 'cart');
     });
 
     it('clicking app-title should navigate to home', () => {
-      productListPage.clickAppTitle();
+      appTopBar.clickAppTitle();
       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
     });
   });
@@ -131,7 +134,7 @@ describe('workspace-project App', () => {
 
     it('should have a buy button', () => {
       products.forEach((product, index) => {
-        productDetailsPage.navigateTo(index);
+        productDetailsPage.navigateTo(index); // warning clears cart
         const url = browser.baseUrl + `products/${index}`;
         browser.wait(ExpectedConditions.urlContains(url), 5000);
         productDetailsPage.clickBuyButton();
@@ -140,6 +143,44 @@ describe('workspace-project App', () => {
         expect(alert.getText()).toEqual('Your product has been added to the cart!');
         alert.accept();
       });
+    });
+  });
+
+  describe('cart', () => {
+    beforeAll(() => {
+      cartPage = new AppCart();
+      productListPage.navigateTo();
+    });
+
+    it('buy products', () => {
+      products.forEach((product, index) => {
+        // products list page
+        productListPage.clickProductName(index);
+        const url = browser.baseUrl + `products/${index}`;
+        browser.wait(ExpectedConditions.urlContains(url), 5000);
+        // product details page
+        productDetailsPage.clickBuyButton();
+        browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
+        const alert = browser.switchTo().alert();
+        expect(alert.getText()).toEqual('Your product has been added to the cart!');
+        alert.accept();
+        // products list page
+        appTopBar.clickAppTitle();
+      });
+    });
+
+    it('should have products in cart', () => {
+      appTopBar.clickCheckoutButton();
+      const url = browser.baseUrl + 'cart';
+      browser.wait(ExpectedConditions.urlContains(url), 5000);
+      products.forEach((product, index) => {
+        expect(cartPage.getProductName(index)).toEqual(product.name);
+        expect(cartPage.getProductPrice(index)).toEqual(`$${product.price}.00`);
+      });
+    });
+
+    it('should nap', () => {
+      browser.sleep(1000000);
     });
   });
 });
