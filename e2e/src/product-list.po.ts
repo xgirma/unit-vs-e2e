@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class AppProductList {
   appTitle = element(by.css('#title > h1'));
   appTitleLink = element(by.css('#title'));
   checkoutButton = element(by.css('#checkout'));

@@ -1,15 +1,17 @@
 import { browser, ExpectedConditions, logging } from 'protractor';
 
-import { AppPage } from './product-list.po';
-import { AppDetails } from './product-details.po';
+import { AppProductList } from './product-list.po';
+import { AppProductDetails } from './product-details.po';
+import { AppCart } from './cart.po';
 import { products } from '../../src/app/products';
 
 describe('workspace-project App', () => {
-  let page: AppPage;
-  let details: AppDetails;
+  let productListPage: AppProductList;
+  let productDetailsPage: AppProductDetails;
+  let productCartPage: AppCart;
 
   beforeEach(() => {
-    page = new AppPage();
+    productListPage = new AppProductList();
   });
 
   afterEach(async () => {
@@ -22,63 +24,63 @@ describe('workspace-project App', () => {
 
   describe('top-bar', () => {
     it('should display app title', () => {
-      page.navigateTo();
-      expect(page.getAppTitleText()).toEqual('My Store');
+      productListPage.navigateTo();
+      expect(productListPage.getAppTitleText()).toEqual('My Store');
     });
 
     it(`app-title should link to '/'`, () => {
-      expect(page.getAppTitleLink()).toEqual(browser.baseUrl);
+      expect(productListPage.getAppTitleLink()).toEqual(browser.baseUrl);
     });
 
     it(`checkout button should link to '/cart'`, () => {
-      expect(page.getCheckoutButtonLink()).toEqual(browser.baseUrl + 'cart');
+      expect(productListPage.getCheckoutButtonLink()).toEqual(browser.baseUrl + 'cart');
     });
 
     it('clicking checkout should navigate to shopping cart', () => {
-      page.clickCheckoutButton();
+      productListPage.clickCheckoutButton();
       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + 'cart');
     });
 
     it('clicking app-title should navigate to home', () => {
-      page.clickAppTitle();
+      productListPage.clickAppTitle();
       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
     });
   });
 
   describe('product-list', () => {
     beforeAll(() => {
-      page.navigateTo();
+      productListPage.navigateTo();
     });
 
     it(`should have page title 'Products'`, () => {
-      expect(page.getPageTitle()).toEqual('Products');
+      expect(productListPage.getPageTitle()).toEqual('Products');
     });
 
     it('should show products name', () => {
       products.forEach((product, index) => {
-        expect(page.getProductName(index)).toEqual(product.name);
+        expect(productListPage.getProductName(index)).toEqual(product.name);
       });
     });
 
     it('each product name a hover note to product details', () => {
       products.forEach((product, index) => {
-        expect(page.getProductLinkHoverText(index)).toEqual(product.name + ' details');
+        expect(productListPage.getProductLinkHoverText(index)).toEqual(product.name + ' details');
       });
     });
 
     it('should show description', () => {
       products.forEach((product, index) => {
         if (product.description) {
-          expect(page.getProductDescription(index)).toEqual('Description: ' + product.description);
+          expect(productListPage.getProductDescription(index)).toEqual('Description: ' + product.description);
         } else {
-          expect(page.hasProductDescription(index)).toBe(false);
+          expect(productListPage.hasProductDescription(index)).toBe(false);
         }
       });
     });
 
     it('clicking share should open alert', () => {
       products.forEach((product, index) => {
-        page.clickShareButton(index);
+        productListPage.clickShareButton(index);
         browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
         const alert = browser.switchTo().alert();
         expect(alert.getText()).toEqual(`Product ${product.name} has been shared!`);
@@ -89,50 +91,50 @@ describe('workspace-project App', () => {
     it('price > 700 should have notification', () => {
       products.forEach((product, index) => {
         if (product.price > 700) {
-          page.clickNotifyMeButton(index);
+          productListPage.clickNotifyMeButton(index);
           browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
           const alert = browser.switchTo().alert();
           expect(alert.getText()).toEqual('You will be notified when the product goes on sale');
           alert.accept();
         } else {
-          expect(page.hasNotifyMeButton(index)).toBe(false);
+          expect(productListPage.hasNotifyMeButton(index)).toBe(false);
         }
       });
     });
 
     it('product name should have product details link', () => {
       products.forEach((product, index) => {
-        expect(page.getProductNameLinText(index)).toEqual(`${browser.baseUrl}products/${index}`);
+        expect(productListPage.getProductNameLinText(index)).toEqual(`${browser.baseUrl}products/${index}`);
       });
     });
   });
 
   describe('product-details', () => {
     beforeAll(() => {
-      details = new AppDetails();
-      page.navigateTo();
+      productDetailsPage = new AppProductDetails();
+      productListPage.navigateTo();
     });
 
     it('should have product details', () => {
       products.forEach((product, index) => {
-        page.clickProductName(index);
+        productListPage.clickProductName(index);
         const url = browser.baseUrl + `products/${index}`;
         browser.wait(ExpectedConditions.urlContains(url), 5000);
-        expect(details.getPageTitle()).toEqual('Product Details');
-        expect(details.getProductName()).toEqual(product.name);
-        expect(details.getProductPrice()).toEqual(`$${product.price}.00`);
-        expect(details.getProductDescription()).toEqual(product.description);
-        page.navigateTo();
+        expect(productDetailsPage.getPageTitle()).toEqual('Product Details');
+        expect(productDetailsPage.getProductName()).toEqual(product.name);
+        expect(productDetailsPage.getProductPrice()).toEqual(`$${product.price}.00`);
+        expect(productDetailsPage.getProductDescription()).toEqual(product.description);
+        productListPage.navigateTo();
         browser.wait(ExpectedConditions.urlContains(browser.baseUrl ), 5000);
       });
     });
 
     it('should have a buy button', () => {
       products.forEach((product, index) => {
-        details.navigateTo(index);
+        productDetailsPage.navigateTo(index);
         const url = browser.baseUrl + `products/${index}`;
         browser.wait(ExpectedConditions.urlContains(url), 5000);
-        details.clickBuyButton();
+        productDetailsPage.clickBuyButton();
         browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
         const alert = browser.switchTo().alert();
         expect(alert.getText()).toEqual('Your product has been added to the cart!');
