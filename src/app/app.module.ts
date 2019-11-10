@@ -8,13 +8,15 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductAlertComponent } from './product-alert/product-alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     CartComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductAlertComponent
   ],
   imports: [
     BrowserModule,

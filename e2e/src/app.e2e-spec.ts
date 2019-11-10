@@ -83,5 +83,19 @@ describe('workspace-project App', () => {
         alert.accept();
       });
     });
+
+    it('price > 700 should have notification', () => {
+      products.forEach((product, index) => {
+        if (product.price > 700) {
+          page.clickNotifyMeButton(index);
+          browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
+          const alert = browser.switchTo().alert();
+          expect(alert.getText()).toEqual('You will be notified when the product goes on sale');
+          alert.accept();
+        } else {
+          expect(page.hasNotifyMeButton(index)).toBe(false);
+        }
+      });
+    });
   });
 });

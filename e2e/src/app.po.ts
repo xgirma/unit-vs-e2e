@@ -53,4 +53,12 @@ export class AppPage {
   clickShareButton(index) {
     return element(by.css(`#product${index} > button`)).click() as Promise<void>;
   }
+
+  clickNotifyMeButton(index) {
+    return element(by.css(`#product${index} > app-product-alert > p > button`)).click() as Promise<void>;
+  }
+
+  hasNotifyMeButton(index) {
+    return element(by.css(`#product${index} > app-product-alert > p > button`)).isPresent() as Promise<boolean>;
+  }
 }

@@ -3,6 +3,7 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { ProductListComponent } from './product-list.component';
+import { ProductAlertComponent } from '../product-alert/product-alert.component';
 import { products } from '../products';
 
 describe('ProductListComponent', () => {
@@ -11,7 +12,7 @@ describe('ProductListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
+      declarations: [ ProductListComponent, ProductAlertComponent ]
     })
     .compileComponents();
   }));
@@ -80,6 +81,25 @@ describe('ProductListComponent', () => {
       expect(window.alert).toHaveBeenCalledWith(`Product ${product.name} has been shared!`);
       jasmine.getEnv().allowRespy(true);
       spy.calls.reset();
+    });
+  });
+
+  it('price > 700 should have notification', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    products.forEach((product, index) => {
+      let button: DebugElement;
+      if (product.price > 700) {
+        button = fixture.debugElement.query(By.css(`#product${index} > app-product-alert > p > button`));
+
+        const spy = spyOn(window, 'alert');
+        button.triggerEventHandler('click', null);
+        expect(window.alert).toHaveBeenCalledWith(`You will be notified when the product goes on sale`);
+        jasmine.getEnv().allowRespy(true);
+        spy.calls.reset();
+      } else {
+        button = fixture.debugElement.query(By.css(`#product${index} > app-product-alert > p > button`));
+        expect(button).toBeNull();
+      }
     });
   });
 });
