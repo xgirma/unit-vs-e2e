@@ -288,3 +288,41 @@ add a different port (e.g. 4201) to your angular.json
           }
         }
 ```
+
+# searchig for non existing elemenet
+```javascript
+it('should show description', () => {
+      products.forEach((product, index) => {
+        if (product.description) {
+          expect(page.getProductDescription(index)).toEqual('Description: ' + product.description);
+        } else {
+          expect(page.getProductDescription(index)).toEqual('');
+        }
+      });
+});
+```
+Error message:
+
+```text
+ ✗ should show description
+        - Failed: No element found using locator: By(css selector, #product2 > p)
+            at elementArrayFinder.getWebElements.then (/Users/girmae.nigusse/angular/your-first-app/node_modules/protractor/built/element.js:814:27)
+```
+Solution:
+```javascript
+  hasProductDescription(index) {
+    return element(by.css(`#product${index} > p`)).isPresent() as Promise<boolean>;
+  }
+```
+
+```javascript
+it('should show description', () => {
+      products.forEach((product, index) => {
+        if (product.description) {
+          expect(page.getProductDescription(index)).toEqual('Description: ' + product.description);
+        } else {
+          expect(page.hasProductDescription(index)).toBe(false);
+        }
+      });
+});
+```

@@ -41,4 +41,12 @@ export class AppPage {
   getProductLinkHoverText(index) {
     return element(by.css(`#product${index} > h3 > a`)).getAttribute('title') as Promise<string>;
   }
+
+  getProductDescription(index) {
+    return element(by.css(`#product${index} > p`)).getText() as Promise<string>;
+  }
+
+  hasProductDescription(index) {
+    return element(by.css(`#product${index} > p`)).isPresent() as Promise<boolean>;
+  }
 }

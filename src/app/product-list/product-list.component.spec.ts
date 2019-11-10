@@ -40,14 +40,28 @@ describe('ProductListComponent', () => {
   it('should show products name', () => {
     const compiled = fixture.debugElement.nativeElement;
     products.forEach((product, index) => {
-      expect(compiled.querySelector(`#product${index} > h3 > a`).textContent).toEqual(product.name);
+      expect(compiled.querySelector(`#product${index} > h3 > a`).textContent)
+        .toEqual(product.name);
     });
   });
 
   it('each product name a hover note to product details', () => {
     const compiled = fixture.debugElement.nativeElement;
     products.forEach((product, index) => {
-      expect(compiled.querySelector(`#product${index} > h3 > a`).getAttribute('title')).toEqual(product.name + ' details');
+      expect(compiled.querySelector(`#product${index} > h3 > a`).getAttribute('title'))
+        .toEqual(product.name + ' details');
+    });
+  });
+
+  it('should show description', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    products.forEach((product, index) => {
+      if (product.description) {
+        expect(compiled.querySelector(`#product${index} > p`).textContent)
+          .toEqual('Description: ' + product.description);
+      } else {
+        expect(compiled.querySelector(`#product${index} > p`)).toBeNull();
+      }
     });
   });
 });

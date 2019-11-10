@@ -45,7 +45,7 @@ describe('workspace-project App', () => {
 
   describe('product-list', () => {
     beforeAll(() => {
-      page.navigateTo();
+      page.navigateTo(); // to reset if navigation fails before reaching here
     });
 
     it(`should have sub-title 'product'`, () => {
@@ -61,6 +61,16 @@ describe('workspace-project App', () => {
     it('each product name a hover note to product details', () => {
       products.forEach((product, index) => {
         expect(page.getProductLinkHoverText(index)).toEqual(product.name + ' details');
+      });
+    });
+
+    it('should show description', () => {
+      products.forEach((product, index) => {
+        if (product.description) {
+          expect(page.getProductDescription(index)).toEqual('Description: ' + product.description);
+        } else {
+          expect(page.hasProductDescription(index)).toBe(false);
+        }
       });
     });
   });
