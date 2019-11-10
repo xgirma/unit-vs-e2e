@@ -22,4 +22,8 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have items', () => {
+    expect(component.items).toBeDefined();
+  });
 });

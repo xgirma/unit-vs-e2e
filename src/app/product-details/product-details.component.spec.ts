@@ -24,6 +24,10 @@ describe('ProductDetailsComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    component.product = [];
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -41,6 +45,7 @@ describe('ProductDetailsComponent', () => {
       expect(compiled.querySelector('h3').textContent).toEqual(product.name);
       expect(compiled.querySelector('h4').textContent).toEqual(`$${product.price}.00`);
       expect(compiled.querySelector('p').textContent).toEqual(product.description);
+      component.product = {};
     });
   });
 
@@ -56,6 +61,7 @@ describe('ProductDetailsComponent', () => {
       expect(window.alert).toHaveBeenCalledWith('Your product has been added to the cart!');
       jasmine.getEnv().allowRespy(true);
       spy.calls.reset();
+      component.product = {};
     });
   });
 });

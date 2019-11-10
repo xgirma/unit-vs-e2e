@@ -28,6 +28,11 @@ describe('ProductAlertComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have product and notify', () => {
+    expect(component.product).toBeDefined();
+    expect(component.notify).toBeDefined();
+  });
+
   it('price > 700 should have notification', () => {
     products.forEach((product, index) => {
       component.product = products[index];
