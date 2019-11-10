@@ -5,6 +5,7 @@ export class AppDetails {
   name = element(by.css('app-product-details > div> h3'));
   price = element(by.css('app-product-details > div> h4'));
   description = element(by.css('app-product-details > div >  p'));
+  button = element(by.css('app-product-details > div >  button'));
 
   navigateTo(index = 0) {
     return browser.get(browser.baseUrl + 'products' + `/${index}`) as Promise<any>;
@@ -24,5 +25,9 @@ export class AppDetails {
 
   getProductDescription() {
     return this.description.getText() as Promise<string>;
+  }
+
+  clickBuyButton() {
+    return this.button.click() as Promise<void>;
   }
 }

@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProductDetailsComponent } from './product-details.component';
 import { products } from '../products';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
 describe('ProductDetailsComponent', () => {
   let component: ProductDetailsComponent;
@@ -39,6 +41,21 @@ describe('ProductDetailsComponent', () => {
       expect(compiled.querySelector('h3').textContent).toEqual(product.name);
       expect(compiled.querySelector('h4').textContent).toEqual(`$${product.price}.00`);
       expect(compiled.querySelector('p').textContent).toEqual(product.description);
+    });
+  });
+
+  it('should have a buy button', () => {
+    products.forEach(product => {
+      component.product = product;
+      fixture.detectChanges();
+      let button: DebugElement;
+      button = fixture.debugElement.query(By.css(`button`));
+
+      const spy = spyOn(window, 'alert');
+      button.triggerEventHandler('click', null);
+      expect(window.alert).toHaveBeenCalledWith('Your product has been added to the cart!');
+      jasmine.getEnv().allowRespy(true);
+      spy.calls.reset();
     });
   });
 });

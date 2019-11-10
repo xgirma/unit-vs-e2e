@@ -126,5 +126,18 @@ describe('workspace-project App', () => {
         browser.wait(ExpectedConditions.urlContains(browser.baseUrl ), 5000);
       });
     });
+
+    it('should have a buy button', () => {
+      products.forEach((product, index) => {
+        details.navigateTo(index);
+        const url = browser.baseUrl + `products/${index}`;
+        browser.wait(ExpectedConditions.urlContains(url), 5000);
+        details.clickBuyButton();
+        browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
+        const alert = browser.switchTo().alert();
+        expect(alert.getText()).toEqual('Your product has been added to the cart!');
+        alert.accept();
+      });
+    });
   });
 });
