@@ -27,16 +27,16 @@ describe('TopBarComponent', () => {
 
   it('should display title', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toEqual('My Store');
+    expect(compiled.querySelector('#title > h1').textContent).toEqual('My Store');
   });
 
   it(`title should link to '/'`, () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('a:nth-child(1)').getAttribute('href')).toEqual('/');
+    expect(compiled.querySelector('#title').getAttribute('href')).toEqual('/');
   });
 
   it(`checkout button should link to '/cart'`, () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('a:nth-child(2)').getAttribute('href')).toEqual('/cart');
+    expect(compiled.querySelector('#checkout').getAttribute('href')).toEqual('/cart');
   });
 });

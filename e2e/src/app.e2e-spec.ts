@@ -1,6 +1,7 @@
 import { browser, logging } from 'protractor';
 
 import { AppPage } from './app.po';
+import { products } from '../../src/app/products';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -39,6 +40,28 @@ describe('workspace-project App', () => {
     it('clicking title should navigate to home', () => {
       page.clickTitle();
       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
+    });
+  });
+
+  describe('product-list', () => {
+    beforeAll(() => {
+      page.navigateTo();
+    });
+
+    it(`should have sub-title 'product'`, () => {
+      expect(page.getProductTitle()).toEqual('Products');
+    });
+
+    it('should show products name', () => {
+      products.forEach((product, index) => {
+        expect(page.getProductName(index)).toEqual(product.name);
+      });
+    });
+
+    it('each product name a hover note to product details', () => {
+      products.forEach((product, index) => {
+        expect(page.getProductLinkHoverText(index)).toEqual(product.name + ' details');
+      });
     });
   });
 });
