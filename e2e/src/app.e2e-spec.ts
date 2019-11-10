@@ -1,7 +1,7 @@
 import { browser, ExpectedConditions, logging } from 'protractor';
 
-import { AppPage } from './app.po';
-import { AppDetails } from './details.po';
+import { AppPage } from './product-list.po';
+import { AppDetails } from './product-details.po';
 import { products } from '../../src/app/products';
 
 describe('workspace-project App', () => {
