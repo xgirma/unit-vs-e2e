@@ -178,9 +178,5 @@ describe('workspace-project App', () => {
         expect(cartPage.getProductPrice(index)).toEqual(`$${product.price}.00`);
       });
     });
-
-    it('should nap', () => {
-      browser.sleep(1000000);
-    });
   });
 });
