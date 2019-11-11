@@ -364,3 +364,59 @@ it('shared button should have alert when clicked', () => {
     });
   });
 ```
+
+# when adding import { HttpClient } from '@angular/common/http';
+```javascript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CartService {
+  items = [];
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  addToCart(product) {
+    this.items.push(product);
+  }
+
+  getItems() {
+    return this.items;
+  }
+
+  clearCart() {
+    this.items = [];
+    return this.items;
+  }
+}
+```
+
+Error message:
+```text
+NullInjectorError: StaticInjectorError(DynamicTestModule)[HttpClient]: 
+  StaticInjectorError(Platform: core)[HttpClient]: 
+    NullInjectorError: No provider for HttpClient!
+```
+
+Solution: add HttpClientTestingModule
+```javascript
+import {async, TestBed} from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { CartService } from './cart.service';
+import { products } from './products';
+
+describe('CartService', () => {
+  let service: CartService;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ]
+    })
+      .compileComponents();
+  }));
+```
