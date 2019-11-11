@@ -8,10 +8,6 @@ If you encounter errors look [here](https://github.com/xgirma/unit-vs-e2e/blob/m
 
 Which testing pyramid? a, b, or c.
 
-    a, fewer e2e-tests and more unit-tests
-    b, 'proprtional` e2e-tests and unit-tests
-    c, fewer unit-tests and more e2e-tests
-
 # Background
 [Your First App](https://angular.io/start) is a small Angular application containing the four pages as shown below.
 
@@ -19,4 +15,4 @@ Which testing pyramid? a, b, or c.
 
 Products page display list of products. Details page display product details. Cart page display items added to the cart. Shipping page shows shipping options.  
 
-The goal is to attempt to get 100% unit- and e2e-test coverage for each of the pages. On doing so document which testing pyramid is viable for the app. 
+The goal is to attempt to get near-full unit- and e2e-test coverage for each of the pages. On doing so document which testing pyramid is viable for the app. 
