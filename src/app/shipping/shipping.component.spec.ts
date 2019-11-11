@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ShippingComponent } from './shipping.component';
 
@@ -8,7 +9,8 @@ describe('ShippingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShippingComponent ]
+      declarations: [ ShippingComponent ],
+      imports: [ HttpClientTestingModule ]
     })
     .compileComponents();
   }));
@@ -22,4 +24,6 @@ describe('ShippingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO add more test
 });

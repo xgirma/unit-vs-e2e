@@ -420,3 +420,60 @@ describe('CartService', () => {
       .compileComponents();
   }));
 ```
+
+# add import { FormBuilder } from '@angular/forms';
+
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+
+import { CartService } from '../cart.service';
+
+@Component({
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css']
+})
+export class CartComponent implements OnInit {
+  items;
+  checkoutForm;
+
+  constructor(
+    private cartService: CartService,
+    private formBuilder: FormBuilder,
+  ) { }
+
+  ngOnInit() {
+    this.items = this.cartService.getItems();
+  }
+}
+```
+
+Error message:
+```text
+NullInjectorError: StaticInjectorError(DynamicTestModule)[CartComponent -> FormBuilder]: 
+  StaticInjectorError(Platform: core)[CartComponent -> FormBuilder]: 
+    NullInjectorError: No provider for FormBuilder!
+```
+
+Solution: add ReactiveFormsModule
+
+```javascrip
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { CartComponent } from './cart.component';
+
+describe('CartComponent', () => {
+  let component: CartComponent;
+  let fixture: ComponentFixture<CartComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ CartComponent ],
+      imports: [ HttpClientTestingModule, ReactiveFormsModule ]
+    })
+    .compileComponents();
+  }));
+```

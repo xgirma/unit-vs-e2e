@@ -35,6 +35,7 @@ import { ShippingComponent } from './shipping/shipping.component';
       { path: 'cart', component: CartComponent },
       { path: '', component: ProductListComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
+      { path: 'shipping', component: ShippingComponent },
     ]),
   ],
   providers: [],
