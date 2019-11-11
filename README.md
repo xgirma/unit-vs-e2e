@@ -15,4 +15,4 @@ Which testing pyramid? a, b, or c.
 # Background
 [Your First App](https://angular.io/start) is a small Angular application containing the four pages as shown below.
 
-<div style="text-align:center"><img width="751" alt="Screen Shot 2019-11-11 at 12 48 06 AM" src="https://user-images.githubusercontent.com/5876481/68563873-0274e780-041d-11ea-9876-6d39dc5f3f2e.png"></div>
+<img width="751" alt="Screen Shot 2019-11-11 at 12 48 06 AM" src="https://user-images.githubusercontent.com/5876481/68563873-0274e780-041d-11ea-9876-6d39dc5f3f2e.png">
