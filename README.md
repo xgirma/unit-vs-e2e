@@ -17,4 +17,6 @@ Which testing pyramid? a, b, or c.
 
 <img width="1179" alt="Screen Shot 2019-11-11 at 12 48 06 AM" src="https://user-images.githubusercontent.com/5876481/68563873-0274e780-041d-11ea-9876-6d39dc5f3f2e.png">
 
-Products page display list of products. Details page display product details. Cart page display items in cart. Shipping page shows shipping options.  
+Products page display list of products. Details page display product details. Cart page display items added to the cart. Shipping page shows shipping options.  
+
+The goal is to attempt to get 100% unit- and e2e-test coverage for each of the pages. On doing so document which testing pyramid is viable for the app. 
