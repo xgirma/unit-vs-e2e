@@ -6,6 +6,7 @@ import { TopBarComponent } from './top-bar.component';
 describe('TopBarComponent', () => {
   let component: TopBarComponent;
   let fixture: ComponentFixture<TopBarComponent>;
+  let compiled;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,6 +20,7 @@ describe('TopBarComponent', () => {
     fixture = TestBed.createComponent(TopBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.debugElement.nativeElement;
   });
 
   it('should create', () => {
@@ -26,17 +28,17 @@ describe('TopBarComponent', () => {
   });
 
   it('should display title', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#title > h1').textContent).toEqual('My Store');
+    const el = compiled.querySelector('#title > h1');
+    expect(el.textContent).toEqual('My Store');
   });
 
   it(`title should link to '/'`, () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#title').getAttribute('href')).toEqual('/');
+    const el = compiled.querySelector('#title');
+    expect(el.getAttribute('href')).toEqual('/');
   });
 
   it(`checkout button should link to '/cart'`, () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#checkout').getAttribute('href')).toEqual('/cart');
+    const el = compiled.querySelector('#checkout');
+    expect(el.getAttribute('href')).toEqual('/cart');
   });
 });

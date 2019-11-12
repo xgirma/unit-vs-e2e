@@ -12,6 +12,9 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
+  suites: {
+    topBar: './src/top-bar/*.e2e-spec.ts',
+  },
   capabilities: {
     browserName: 'chrome'
   },

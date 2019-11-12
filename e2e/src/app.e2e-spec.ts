@@ -25,31 +25,6 @@ describe('workspace-project App', () => {
     } as logging.Entry));
   });
 
-  describe('top-bar', () => {
-    it('should display app title', () => {
-      productListPage.navigateTo();
-      expect(appTopBar.getAppTitleText()).toEqual('My Store');
-    });
-
-    it(`app-title should link to '/'`, () => {
-      expect(appTopBar.getAppTitleLink()).toEqual(browser.baseUrl);
-    });
-
-    it(`checkout button should link to '/cart'`, () => {
-      expect(appTopBar.getCheckoutButtonLink()).toEqual(browser.baseUrl + 'cart');
-    });
-
-    it('clicking checkout should navigate to shopping cart', () => {
-      appTopBar.clickCheckoutButton();
-      expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + 'cart');
-    });
-
-    it('clicking app-title should navigate to home', () => {
-      appTopBar.clickAppTitle();
-      expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
-    });
-  });
-
   describe('product-list', () => {
     beforeAll(() => {
       productListPage.navigateTo();
