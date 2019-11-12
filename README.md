@@ -26,7 +26,7 @@ Details page display product details.
 Cart page display items added to the cart. 
 Shipping page shows shipping options. 
 
-The goal is to attempt to get near-full unit- and e2e-test coverage for each of the pages. 
+The goal is to attempt to get near-full unit- and e2e-test coverage for each of the pages and a service. 
 On doing so suggest which testing model is viable for the app.
 
 ## Limitations
