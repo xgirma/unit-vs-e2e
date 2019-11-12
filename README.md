@@ -36,6 +36,10 @@ What is a unit of software-code is arguable.
 
 Intuitively, we use Angular's classification of application modules; and have seven-unit of applications (six components and one service) to experiment. For clarity and time, we ignore other parts of the application. 
 
+Many other testing types between unit-tests and e2e-tests are not covered.
+
+Purposefully, we will attempt to create a one-to-one correspondence between each unit-test and e2e-test assertions forcomparison.
+
 The tests are executed using: OS X Catalina 10.15.1, Mac mini (2018), Processor: 3 GHz 6-Core, Intel Core i5, Memory: 8 GB 2667 MHz DDR4, WebStorm: 2019.2.3, and Chrome Browser (incognito) 78.0.3904.
 
 
