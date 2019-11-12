@@ -27,19 +27,15 @@ Cart page display items added to the cart.
 Shipping page shows shipping options.  
 
 The goal is to attempt to get near-full unit- and e2e-test coverage for each of the pages. 
-On doing so document which testing pyramid is viable for the app.
+On doing so document which testing model is viable for the app.
 
 ## Limitations
 Only a single front-end framework [Angular](https://angular.io) and a single integration 
 test framework [Protractor](http://www.protractortest.org/#/) is used. 
-Testability varies from one framework to another. Using different frameworks may or 
-may not present a different result.<sup id="a1">[2](#f1)</sup>
+Testability varies from one framework to another. Using different frameworks may present a different result.<sup id="a1">[2](#f1)</sup>
    
 What is a unit of software-code is arguable. 
-
-Intuitively, we use Angular's classification of application modules; and have seven-unit of 
-applications (six components and one service) to experiment. For clarity and time, 
-we ignore other parts of the application. 
+We use Angular's classification of application modules; such as components and services, to classify the application into seven-units.  
 
 Many other testing types between unit-tests and e2e-tests are not covered.
 
@@ -50,7 +46,7 @@ The tests are executed using: OS X Catalina 10.15.1, Mac mini (2018), Processor:
 Intel Core i5, Memory: 8 GB 2667 MHz DDR4, WebStorm: 2019.2.3, and Chrome Browser (incognito) 78.0.3904.
 
 ## Measurement 
-Measurements to help us to find a suitable testing model for each of the seven units of application we will be exploring below. 
+The following requirements will help us to find a suitable testing model for each unit and use that to infer a model for the whole application. 
 
     1. for each unit test, there is a corresponding e2e test
     2. for each e2e test, there a corresponding unit test
@@ -63,7 +59,8 @@ Measurements to help us to find a suitable testing model for each of the seven u
 The seven units of the application units constitute top-bar, product-list, product-detail, product-alert, cart, shipping, and cart-service. 
 
 ### 1. top-bar
-The top-blue-bar, (top-bar) has three functionality, displaying title, navigation to cart, and clicking title navigate back to home. Below is an almost identical test assertion, testing the top-bar using unit-tests and e2e-tests.
+The top-blue-bar, (top-bar) has three functionality, displaying title, navigation to cart, and clicking title navigate back to home. 
+Below is an almost identical test assertion, testing the top-bar using unit- and e2e-tests.
 
 [unit ↩](https://github.com/xgirma/unit-vs-e2e/blob/master/src/app/top-bar/top-bar.component.spec.ts)
 ```javascript
