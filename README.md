@@ -25,17 +25,18 @@ Products page display list of products.
 Details page display product details. 
 Cart page display items added to the cart. 
 Shipping page shows shipping options.  
-
 The goal is to attempt to get near-full unit- and e2e-test coverage for each of the pages. 
-On doing so document which testing model is viable for the app.
+On doing so suggest which testing model is viable for the app.
 
 ## Limitations
 Only a single front-end framework [Angular](https://angular.io) and a single integration 
 test framework [Protractor](http://www.protractortest.org/#/) is used. 
-Testability varies from one framework to another. Using different frameworks may present a different result.<sup id="a1">[2](#f1)</sup>
+Testability varies from one framework to another. Using different frameworks 
+may present a different result.<sup id="a1">[2](#f1)</sup>
    
 What is a unit of software-code is arguable. 
-We use Angular's classification of application modules; such as components and services, to classify the application into seven-units.  
+We use Angular's classification of application modules; such as components and 
+services, to classify the application into seven-units.  
 
 Many other testing types between unit-tests and e2e-tests are not covered.
 
@@ -46,7 +47,8 @@ The tests are executed using: OS X Catalina 10.15.1, Mac mini (2018), Processor:
 Intel Core i5, Memory: 8 GB 2667 MHz DDR4, WebStorm: 2019.2.3, and Chrome Browser (incognito) 78.0.3904.
 
 ## Measurement 
-The following requirements will help us to find a suitable testing model for each unit and use that to infer a model for the whole application. 
+The following requirements will help us to find a suitable testing model for each unit 
+and use that to infer a model for the whole application. 
 
     1. for each unit test, there is a corresponding e2e test
     2. for each e2e test, there a corresponding unit test
