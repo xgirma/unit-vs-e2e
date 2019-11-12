@@ -52,17 +52,17 @@ Intel Core i5, Memory: 8 GB 2667 MHz DDR4, WebStorm: 2019.2.3, and Chrome Browse
 ## Measurement 
 Measurements to help us to find a suitable testing model for each of the seven units of application we will be exploring below. 
 
-    1, for each unit test, there is a corresponding e2e test
-    2, for each e2e test, there a corresponding unit test
-    3, can only be tested with unit test, n/m assertions
-    4, can only be tested with e2e test, n/m assertions
+    1. for each unit test, there is a corresponding e2e test
+    2. for each e2e test, there a corresponding unit test
+    3. n/m assertions, can only be tested with unit test, 
+    4. n/m assertions, can only be tested with e2e test
     5. integration and isolation testing threadoffs 
     6. test execution time
 
 ## Units of applications
 The seven units of the application units constitute top-bar, product-list, product-detail, product-alert, cart, shipping, and cart-service. 
 
-### Top-bar
+### 1. top-bar
 The top-blue-bar, (top-bar) has three functionality, displaying title, navigation to cart, and clicking title navigate back to home. Below is an almost identical test assertion, testing the top-bar using unit-tests and e2e-tests.
 
 [unit ↩](https://github.com/xgirma/unit-vs-e2e/blob/master/src/app/top-bar/top-bar.component.spec.ts)
