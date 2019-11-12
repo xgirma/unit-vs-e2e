@@ -38,9 +38,56 @@ Intuitively, we use Angular's classification of application modules; and have se
 
 Many other testing types between unit-tests and e2e-tests are not covered.
 
-Purposefully, we will attempt to create a one-to-one correspondence between each unit-test and e2e-test assertions forcomparison.
+Purposefully, we will attempt to create a one-to-one correspondence between each unit-test and e2e-test assertions for comparison.
 
 The tests are executed using: OS X Catalina 10.15.1, Mac mini (2018), Processor: 3 GHz 6-Core, Intel Core i5, Memory: 8 GB 2667 MHz DDR4, WebStorm: 2019.2.3, and Chrome Browser (incognito) 78.0.3904.
+
+## Top-bar
+The top-blue-bar, (top-bar) have three functionality, displaying title, navigation to cart, and clicking title navigates back to home. 
+
+[unit test...](https://github.com/xgirma/unit-vs-e2e/blob/master/src/app/top-bar/top-bar.component.spec.ts)
+```javascript
+it('should create', () => {
+  expect(component).toBeTruthy();
+});
+
+it('should display title', () => {
+  const el = compiled.querySelector('#title > h1');
+  expect(el.textContent).toEqual('My Store');
+});
+
+it(`title should link to '/'`, () => {
+  const el = compiled.querySelector('#title');
+  expect(el.getAttribute('href')).toEqual('/');
+});
+
+it(`checkout button should link to '/cart'`, () => {
+  const el = compiled.querySelector('#checkout');
+  expect(el.getAttribute('href')).toEqual('/cart');
+});
+``` 
+[e2e test...](https://github.com/xgirma/unit-vs-e2e/blob/master/e2e/src/top-bar/top-bar.e2e-spec.ts)
+```javascript
+it('should have top-bar', () => {
+  expect(page.hasTopBar()).toBeTruthy();
+});
+
+it('should display title', () => {
+  expect(page.getTitleText()).toEqual('My Store');
+});
+
+it(`checkout button should link to '/cart'`, () => {
+  expect(page.getCheckoutLink()).toEqual(baseUrl + 'cart');
+  page.clickCheckout();
+  expect(browser.getCurrentUrl()).toEqual(baseUrl + 'cart');
+});
+
+it(`title should link to '/'`, () => {
+  expect(page.getTitleLink()).toEqual(baseUrl);
+  page.clickTitle();
+  expect(browser.getCurrentUrl()).toEqual(baseUrl);
+});
+```
 
 
 --------------
