@@ -43,7 +43,7 @@ Purposefully, we will attempt to create a one-to-one correspondence between each
 The tests are executed using: OS X Catalina 10.15.1, Mac mini (2018), Processor: 3 GHz 6-Core, Intel Core i5, Memory: 8 GB 2667 MHz DDR4, WebStorm: 2019.2.3, and Chrome Browser (incognito) 78.0.3904.
 
 ## Top-bar
-The top-blue-bar, (top-bar) have three functionality, displaying title, navigation to cart, and clicking title navigates back to home. Below is an _almost identical_ test assertions testing top-bar using unit-tests and e2e-tests.
+The top-blue-bar, (top-bar) has three functionality, displaying title, navigation to cart, and clicking title navigate back to home. Below is an almost identical test assertion, testing the top-bar using unit-tests and e2e-tests.
 
 [unit ↩](https://github.com/xgirma/unit-vs-e2e/blob/master/src/app/top-bar/top-bar.component.spec.ts)
 ```javascript
