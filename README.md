@@ -24,7 +24,8 @@ test.allTheThings()<sup id="a1">[1](#f1)</sup>
 Products page display list of products. 
 Details page display product details. 
 Cart page display items added to the cart. 
-Shipping page shows shipping options.  
+Shipping page shows shipping options. 
+
 The goal is to attempt to get near-full unit- and e2e-test coverage for each of the pages. 
 On doing so suggest which testing model is viable for the app.
 
@@ -58,7 +59,7 @@ and use that to infer a model for the whole application.
     6. test execution time
 
 ## Units of applications
-The seven units of the application units constitute top-bar, product-list, product-detail, product-alert, cart, shipping, and cart-service. 
+The seven units of the application constitute top-bar, product-list, product-detail, product-alert, cart, shipping, and cart-service. 
 
 ### 1. top-bar
 The top-blue-bar, (top-bar) has three functionality, displaying title, navigation to cart, and clicking title navigate back to home. 
