@@ -58,9 +58,9 @@ and use that to infer a model for the whole application.
     5. integration and isolation testing threadoffs 
     6. test execution time
 
-## Units of applications
+## Units of application
 The seven units of the application constitute top-bar, product-list, product-detail, product-alert, 
-cart, shipping, and cart-service. 
+cart, shipping, and the cart-service. 
 
 ### 1. top-bar
 The top-blue-bar (top-bar) has three functionality, displaying title, clicking the title should 
