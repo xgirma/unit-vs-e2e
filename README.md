@@ -63,19 +63,10 @@ The seven units of the application constitute top-bar, product-list, product-det
 cart, shipping, and cart-service. 
 
 ### 1. top-bar
-The top-blue-bar (top-bar) has three functionality, displaying title, clicking the title navigates 
-back to the home page, and clicking the Checkout button navigates to the cart. 
+The top-blue-bar (top-bar) has three functionality, displaying title, clicking the title should 
+navigate us back to the home page, and clicking the Checkout button should navigate us to the cart page. 
 
-    Given I visit /
-    Then I should see the application title
-    
-    Given I visit /
-    When I click the Checkout button
-    Then I should navigate to the cart page
-    
-    Given that I visit /
-    When I click on the title
-    Then I should navigate to the home page
+Below is an implementation of these requirements using unit- and e2e-tests.
 
 [unit ↩](https://github.com/xgirma/unit-vs-e2e/blob/master/src/app/top-bar/top-bar.component.spec.ts)
 ```javascript
