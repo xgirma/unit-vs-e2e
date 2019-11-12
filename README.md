@@ -45,7 +45,7 @@ The tests are executed using: OS X Catalina 10.15.1, Mac mini (2018), Processor:
 ## Top-bar
 The top-blue-bar, (top-bar) have three functionality, displaying title, navigation to cart, and clicking title navigates back to home. Below is an _almost identical_ test assertions testing top-bar using unit-tests and e2e-tests.
 
-[unit test...↩](https://github.com/xgirma/unit-vs-e2e/blob/master/src/app/top-bar/top-bar.component.spec.ts)
+[unit ↩](https://github.com/xgirma/unit-vs-e2e/blob/master/src/app/top-bar/top-bar.component.spec.ts)
 ```javascript
 it('should create', () => {
   expect(component).toBeTruthy();
@@ -66,7 +66,7 @@ it(`checkout button should link to '/cart'`, () => {
   expect(el.getAttribute('href')).toEqual('/cart');
 });
 ``` 
-[e2e test...↩](https://github.com/xgirma/unit-vs-e2e/blob/master/e2e/src/top-bar/top-bar.e2e-spec.ts)
+[e2e ↩](https://github.com/xgirma/unit-vs-e2e/blob/master/e2e/src/top-bar/top-bar.e2e-spec.ts)
 ```javascript
 it('should have top-bar', () => {
   expect(page.hasTopBar()).toBeTruthy();
