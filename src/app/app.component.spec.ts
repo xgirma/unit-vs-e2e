@@ -26,6 +26,6 @@ describe('AppComponent', () => {
   it(`should have as title 'your-first-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('your-first-app');
+    expect(app.title).toEqual('unit-vs-e2e');
   });
 });
