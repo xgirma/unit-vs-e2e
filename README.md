@@ -113,4 +113,4 @@ it(`title should link to '/'`, () => {
 --------------
 <b id="f1">1</b> SauceLabs: test.allTheThings(). [↩](#a1)
 
-<b id="f1">2</b> Extended future work might be trying the same application in different frameworks and see if the result found to have some correlations.
+<b id="f1">2</b> Extended future work might be trying the same application in different frameworks and see if the result found to have some correlations. [↩](#a2)
