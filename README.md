@@ -120,7 +120,7 @@ The level of integration and isolation tested in both types are nearly the same.
 
 If speed is not a concern [↩](https://github.com/xgirma/unit-vs-e2e/blob/master/docs/test-results/top-bar.md), the box model could be used for testing the top-box. 
 
-## Product list
+### 2. product list
 Products are listed on the product list page. A user could share a product by clicking the share button, 
 get notification using the notification button, or click the product name to navigate to the product details page.
 
