@@ -113,10 +113,10 @@ There is a one-to-one correspondence since every feature of the application coul
 When taken the slowest data, the unit-test runs six times faster than the e2e test. 
 The level of integration and isolation tested in both types are nearly the same. 
 
-    1. for each unit test, there is a corresponding e2e test
-    2. for each e2e test, there a corresponding unit test
-    3. minimal integration and isolation testing threadoff
-    4. test execution time: unit-test ~ 380ms and e2e-test ~ 1s 996ms 
+    For each unit test, there is a corresponding e2e test
+    For each e2e test, there a corresponding unit test
+    Minimal integration and isolation testing threadoff
+    Test execution time: unit-test ~ 380ms and e2e-test ~ 1s 996ms 
 
 If speed is not a concern [↩](https://github.com/xgirma/unit-vs-e2e/blob/master/docs/test-results/top-bar.md), the box model could be used for testing the top-box. 
 
