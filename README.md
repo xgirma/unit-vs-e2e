@@ -116,10 +116,18 @@ The level of integration and isolation tested in both types are nearly the same.
     1. for each unit test, there is a corresponding e2e test
     2. for each e2e test, there a corresponding unit test
     3. minimal integration and isolation testing threadoff
-    3. test execution time: unit-test ~ 380ms and e2e-test ~ 1s 996ms 
+    4. test execution time: unit-test ~ 380ms and e2e-test ~ 1s 996ms 
 
 If speed is not a concern [↩](https://github.com/xgirma/unit-vs-e2e/blob/master/docs/test-results/top-bar.md), the box model could be used for testing the top-box. 
 
-***
+## Product list
+Products are listed on the product list page. A user could share a product by clicking the share button, 
+get notification using the notification button, or click the product name to navigate to the product details page.
+
+ 
+
+
+
+
 --------------
-<b id="f1">2</b> Extended future work might be trying the same application in different frameworks and see if the result found to have some correlations. [↩](#a1)
+<b id="f1">1</b> Extended future work might be trying the same application in different frameworks and see if the result found to have some correlations. [↩](#a1)
