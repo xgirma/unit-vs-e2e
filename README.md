@@ -11,10 +11,8 @@ create an issue with this [template](https://github.com/xgirma/unit-vs-e2e/blob/
 Which testing approach? a, b, or c.
 
     a. pyramid 
-    b. test.allTheThings()
+    b. box
     c. cone
-
-test.allTheThings()<sup id="a1">[1](#f1)</sup>
 
 ## Background
 [Your First App](https://angular.io/start) is a small Angular application containing the four pages, shown below.
@@ -33,7 +31,7 @@ On doing so suggest which testing model is viable for the app.
 Only a single front-end framework [Angular](https://angular.io) and a single integration 
 test framework [Protractor](http://www.protractortest.org/#/) is used. 
 Testability varies from one framework to another. Using different frameworks 
-may present a different result.<sup id="a1">[2](#f1)</sup>
+may present a different result.<sup id="a1">[1](#f1)</sup>
    
 What is a unit of software-code is arguable. 
 We use Angular's classification of application modules; such as components and 
@@ -111,9 +109,17 @@ it(`title should link to '/'`, () => {
   expect(browser.getCurrentUrl()).toEqual(baseUrl);
 });
 ```
+There is a one-to-one correspondence since every feature of the application could be tested using either a unit- or an e2e test. 
+When taken the slowest data, the unit-test runs six times faster than the e2e test. 
+The level of integration and isolation tested in both types are nearly the same. 
 
+    1. for each unit test, there is a corresponding e2e test
+    2. for each e2e test, there a corresponding unit test
+    3. minimal integration and isolation testing threadoff
+    3. test execution time: unit-test ~ 380ms and e2e-test ~ 1s 996ms 
 
+If speed is not a concern [↩](https://github.com/xgirma/unit-vs-e2e/blob/master/docs/test-results/top-bar.md), the box model could be used for testing the top-box. 
+
+***
 --------------
-<b id="f1">1</b> SauceLabs: test.allTheThings(). [↩](#a1)
-
-<b id="f1">2</b> Extended future work might be trying the same application in different frameworks and see if the result found to have some correlations. [↩](#a2)
+<b id="f1">2</b> Extended future work might be trying the same application in different frameworks and see if the result found to have some correlations. [↩](#a1)
