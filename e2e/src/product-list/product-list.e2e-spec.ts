@@ -1,4 +1,4 @@
-import {browser, ExpectedConditions} from 'protractor';
+import { browser, ExpectedConditions } from 'protractor';
 import { AppProductList } from './product-list.po';
 
 import { products } from '../../../src/app/products';
