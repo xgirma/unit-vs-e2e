@@ -14,6 +14,7 @@ exports.config = {
   ],
   suites: {
     topBar: './src/top-bar/*.e2e-spec.ts',
+    productList: './src/product-list/*.e2e-spec.ts',
   },
   capabilities: {
     browserName: 'chrome'

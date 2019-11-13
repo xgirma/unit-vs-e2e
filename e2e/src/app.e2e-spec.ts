@@ -25,68 +25,6 @@ describe('workspace-project App', () => {
     } as logging.Entry));
   });
 
-  describe('product-list', () => {
-    beforeAll(() => {
-      productListPage.navigateTo();
-    });
-
-    it(`should have page title 'Products'`, () => {
-      expect(productListPage.getPageTitle()).toEqual('Products');
-    });
-
-    it('should show products name', () => {
-      products.forEach((product, index) => {
-        expect(productListPage.getProductName(index)).toEqual(product.name);
-      });
-    });
-
-    it('each product name a hover note to product details', () => {
-      products.forEach((product, index) => {
-        expect(productListPage.getProductLinkHoverText(index)).toEqual(product.name + ' details');
-      });
-    });
-
-    it('should show description', () => {
-      products.forEach((product, index) => {
-        if (product.description) {
-          expect(productListPage.getProductDescription(index)).toEqual('Description: ' + product.description);
-        } else {
-          expect(productListPage.hasProductDescription(index)).toBe(false);
-        }
-      });
-    });
-
-    it('clicking share should open alert', () => {
-      products.forEach((product, index) => {
-        productListPage.clickShareButton(index);
-        browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
-        const alert = browser.switchTo().alert();
-        expect(alert.getText()).toEqual(`Product ${product.name} has been shared!`);
-        alert.accept();
-      });
-    });
-
-    it('price > 700 should have notification', () => {
-      products.forEach((product, index) => {
-        if (product.price > 700) {
-          productListPage.clickNotifyMeButton(index);
-          browser.wait(ExpectedConditions.alertIsPresent(), 5000, 'Alert not present');
-          const alert = browser.switchTo().alert();
-          expect(alert.getText()).toEqual('You will be notified when the product goes on sale');
-          alert.accept();
-        } else {
-          expect(productListPage.hasNotifyMeButton(index)).toBe(false);
-        }
-      });
-    });
-
-    it('product name should have product details link', () => {
-      products.forEach((product, index) => {
-        expect(productListPage.getProductNameLinText(index)).toEqual(`${browser.baseUrl}products/${index}`);
-      });
-    });
-  });
-
   describe('product-details', () => {
     beforeAll(() => {
       productDetailsPage = new AppProductDetails();
