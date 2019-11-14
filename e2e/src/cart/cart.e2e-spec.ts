@@ -6,7 +6,7 @@ import { AppProductDetails } from '../product-details/product.details.po';
 import { AppTopBar } from '../top-bar/top-bar.po';
 import { products } from '../../../src/app/products';
 
-describe('Cart', () => {
+describe('cart', () => {
   let page: AppCart;
   let appTopBar: AppTopBar;
   let productListPage: AppProductList;

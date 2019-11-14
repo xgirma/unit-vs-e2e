@@ -8,10 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "cart": "ng e2e -- --suite=cart",
-    "product_details": "ng e2e -- --suite=productDetails",
-    "product_list": "ng e2e -- --suite=productList",
-    "topbar": "ng e2e -- --suite=topBar"
+    "e2e_cart": "ng e2e -- --suite=cart",
+    "e2e_product_details": "ng e2e -- --suite=productDetails",
+    "e2e_product_list": "ng e2e -- --suite=productList",
+    "e2e_topbar": "ng e2e -- --suite=topBar"
   },
   "private": true,
   "dependencies": {
