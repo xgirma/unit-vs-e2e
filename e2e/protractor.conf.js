@@ -13,8 +13,10 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   suites: {
-    topBar: './src/top-bar/*.e2e-spec.ts',
+    cart: './src/cart/*.e2e-spec.ts',
+    productDetails: './src/product-details/*.e2e-spec.ts',
     productList: './src/product-list/*.e2e-spec.ts',
+    topBar: './src/top-bar/*.e2e-spec.ts',
   },
   capabilities: {
     browserName: 'chrome'

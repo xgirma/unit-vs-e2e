@@ -1,7 +1,7 @@
 import { browser, by, element } from 'protractor';
 
 export class AppCart {
-  pageTitle = element(by.css('h2'));
+  title = element(by.css('h2'));
   name = element.all(by.css('span:nth-child(1)'));
   price = element.all(by.css('span:nth-child(2)'));
 
@@ -9,15 +9,15 @@ export class AppCart {
     return browser.get(browser.baseUrl + 'cart') as Promise<any>;
   }
 
-  getPageTitle() {
-    return this.pageTitle.getText() as Promise<string>;
+  getTitle() {
+    return this.title.getText() as Promise<string>;
   }
 
-  getProductName(index) {
+  getName(index) {
     return this.name.get(index).getText() as Promise<string>;
   }
 
-  getProductPrice(index) {
+  getPrice(index) {
     return this.price.get(index).getText() as Promise<string>;
   }
 }
