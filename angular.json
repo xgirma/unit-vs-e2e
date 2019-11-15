@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "your-first-app": {
+    "unit-vs-e2e": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/your-first-app",
+            "outputPath": "dist/unit-vs-e2e",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "your-first-app:build"
+            "browserTarget": "unit-vs-e2e:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "your-first-app:build:production"
+              "browserTarget": "unit-vs-e2e:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "your-first-app:build"
+            "browserTarget": "unit-vs-e2e:build"
           }
         },
         "test": {
@@ -113,17 +113,21 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "your-first-app:serve",
+            "devServerTarget": "unit-vs-e2e:serve",
             "port": 4201
           },
           "configurations": {
             "production": {
-              "devServerTarget": "your-first-app:serve:production"
+              "devServerTarget": "unit-vs-e2e:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
   },
-  "defaultProject": "your-first-app"
+  "defaultProject": "unit-vs-e2e"
 }
