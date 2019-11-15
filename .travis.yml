@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "10.16.3"
+addons:
+  chrome: stable
+branches:
+  only:
+    - master
+before_script:
+  - npm install -g @angular/cli
+script:
+  - ng lint
+  - ng serve &
+  - npm test -- --watch false --browsers ChromeHeadless
+  - npm run e2e-update-webdriver
+  - npm run e2e-travis
+  - npm run build -- --base-href /unit-vs-e2e/
+  - mv dist/unit-vs-e2e/index.html dist/unit-vs-e2e/404.html
+deploy:
+  provider: pages
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/unit-vs-e2e
+  on:
+    branch: master
