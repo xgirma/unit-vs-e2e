@@ -18,7 +18,6 @@ script:
   - mv dist/unit-vs-e2e/index.html dist/unit-vs-e2e/404.html
 deploy:
   provider: pages
-  skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: dist/unit-vs-e2e
   on:
