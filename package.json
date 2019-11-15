@@ -11,7 +11,8 @@
     "e2e_cart": "ng e2e -- --suite=cart",
     "e2e_product_details": "ng e2e -- --suite=productDetails",
     "e2e_product_list": "ng e2e -- --suite=productList",
-    "e2e_topbar": "ng e2e -- --suite=topBar"
+    "e2e_topbar": "ng e2e -- --suite=topBar",
+    "update-webdriver": "npx webdriver-manager update"
   },
   "private": true,
   "dependencies": {
