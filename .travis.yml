@@ -19,7 +19,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  token: $GITHUB_TOKEN
   local_dir: dist/unit-vs-e2e
   keep_history: true
   verbose: true
