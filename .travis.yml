@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - "10.16.3"
-sudo: true
 addons:
   chrome: stable
 branches:
@@ -11,4 +10,4 @@ before_script:
   - npm install -g @angular/cli
 script:
   - ng lint
-  - npm run lint
+  - npm test -- --watch false --browsers ChromeHeadless
