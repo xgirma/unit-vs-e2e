@@ -15,7 +15,7 @@ Which testing approach? a, b, or c.
     c. cone
 
 ## Background
-[Your First App](https://angular.io/start) is a small Angular application containing the four pages, shown below.
+[Your First App](https://angular.io/start) is a small Angular application containing the four pages, shown below. Click [here](https://xgirma.github.io/unit-vs-e2e/) if you would like to see the deployed application.
 
 <img width="1179" alt="Screen Shot 2019-11-11 at 12 48 06 AM" src="https://user-images.githubusercontent.com/5876481/68563873-0274e780-041d-11ea-9876-6d39dc5f3f2e.png">
 
