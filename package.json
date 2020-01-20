@@ -13,8 +13,7 @@
     "e2e_product_details": "ng e2e -- --suite=productDetails",
     "e2e_product_list": "ng e2e -- --suite=productList",
     "e2e_topbar": "ng e2e -- --suite=topBar",
-    "e2e-update-webdriver": "npx webdriver-manager update --gecko=false",
-    "e2e-travis": "npx protractor --capabilities.chromeOptions.args=--headless e2e/protractor.conf.js"
+    "e2e-update-webdriver": "npx webdriver-manager update --gecko=false"
   },
   "private": true,
   "dependencies": {
@@ -29,30 +28,32 @@
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
     "bootstrap": "4.4.1",
-    "rxjs": "6.5.3",
+    "rxjs": "6.5.4",
     "tslib": "1.10.0",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.803.21",
-    "@angular/cli": "8.3.21",
+    "@angular-devkit/build-angular": "0.803.23",
+    "@angular/cli": "8.3.23",
     "@angular/compiler-cli": "8.2.14",
     "@angular/language-service": "8.2.14",
-    "@types/jasmine": "3.5.0",
+    "@types/jasmine": "3.5.1",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "8.10.59",
-    "angular-cli-ghpages": "0.6.1",
+    "angular-cli-ghpages": "0.6.2",
     "codelyzer": "5.2.1",
     "jasmine-core": "3.5.0",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "4.4.1",
     "karma-chrome-launcher": "3.1.0",
     "karma-coverage-istanbul-reporter": "2.1.1",
-    "karma-jasmine": "3.1.0",
-    "karma-jasmine-html-reporter": "1.4.2",
+    "karma-jasmine": "2.0.1",
+    "karma-jasmine-html-reporter": "1.5.1",
+    "karma-spec-reporter": "0.0.32",
     "protractor": "5.4.2",
-    "ts-node": "8.5.4",
+    "puppeteer": "2.0.0",
+    "ts-node": "8.6.2",
     "tslint": "5.20.1",
-    "typescript": "3.7.4"
+    "typescript": "3.5.3"
   }
 }
