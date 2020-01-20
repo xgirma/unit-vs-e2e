@@ -24,5 +24,4 @@ jobs:
         npm run lint
         npm run build
         npm run test -- --configuration=ci --watch=false --code-coverage
-        npm run webdriver-update
         npm run e2e -- --configuration=ci
