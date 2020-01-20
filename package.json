@@ -13,8 +13,7 @@
     "e2e_product_details": "ng e2e -- --suite=productDetails",
     "e2e_product_list": "ng e2e -- --suite=productList",
     "e2e_topbar": "ng e2e -- --suite=topBar",
-    "e2e-update-webdriver": "npx webdriver-manager update --gecko=false",
-    "e2e-travis": "npx protractor --capabilities.chromeOptions.args=--headless e2e/protractor.conf.js"
+    "e2e-update-webdriver": "npx webdriver-manager update --gecko=false"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +52,6 @@
     "protractor": "5.4.2",
     "ts-node": "8.6.2",
     "tslint": "5.20.1",
-    "typescript": "3.7.4"
+    "typescript": "3.5.3"
   }
 }
