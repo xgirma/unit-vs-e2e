@@ -20,7 +20,6 @@ jobs:
       env:
         CI: true
     - name: lint, build, unit and e2e test
-      working-directory: ./fundamentals/f01-tour-of-heroes-app
       run: |
         npm run lint
         npm run build
