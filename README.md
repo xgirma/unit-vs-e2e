@@ -1,5 +1,5 @@
 # Whether to unit-test and/or end-to-end test
-[![GitHub Actions status | xgirma/unit-vs-e2e(https://github.com/xgirma/unit-vs-e2e/workflows/NodeCI/badge.svg)](https://github.com/xgirma/unit-vs-e2e/actions?workflow=NodeCI)
+[![GitHub Actions status | xgirma/unit-vs-e2e](https://github.com/xgirma/unit-vs-e2e/workflows/NodeCI/badge.svg)](https://github.com/xgirma/unit-vs-e2e/actions?workflow=NodeCI)
 
 This app is based on [Getting Started with Angular: Your First App](https://angular.io/start). 
 Few changes are introduced to add element selectors. 
